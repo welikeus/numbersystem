@@ -21,16 +21,3 @@ int main()
     printf("%d", lowtohight(insystem, innum));
     return 0;
 }
-||||||| merged common ancestors
-=======
-#include <stdio.h>
-#include "func.h"
-
-int lowtohight(char insystem, int innum);
-
-int main()
-{
-
-	
-}
->>>>>>> func is ok, but input is wrong
