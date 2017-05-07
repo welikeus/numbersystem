@@ -1,18 +1,20 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <functionsystem.h>
 
-int hightolow(char *in, int insystem, char *out, int outsystem)
+int fromdecimal(char in[], int insystem, char out[], int outsystem)
 {
     if (insystem == 10) {
-        if (outsystem == 2 || outsystem == 8) {
-            int value = atoi(in);
-            char *save;
-            for (int i = 0; (value / outsystem) == 0; i++, value /= outsystem) {
-                save[i] = (value % outsystem) + '0';
-            }
-            save[i] = (value % outsystem) + '0';
-            save[i+1] = '\0';
-            for (int j = 0; i >= 0; j++, i--) {
-                out[j] = save[i];
+        if (outsystem >= 2 && outsystem <= 9) {
+            int value = atoi(in), i = 0, j = 0;
+            char save[100];
+            do {
+                save[i++] = (value % outsystem) + '0';
+                value /= outsystem;
+            } while (value != 0);
+            save[i--] = '\0';
+            while (i >= 0) {
+                out[j++] = save[i--];
             } 
             out[j] = '\0';
             return 0;
