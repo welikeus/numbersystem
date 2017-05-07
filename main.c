@@ -1,6 +1,6 @@
+#include "functionsystem.h"
 #include <stdio.h>
 #include <string.h>
-#include <functionsystem.h>
 
 int main()
 {
@@ -11,5 +11,26 @@ int main()
     if (fromdecemal(data, dataout, sys) == 0) {
         printf("%s", dataout);
     }
+
+    char insystem[100];
+    int innum;
+    scanf("Input SS of Number: %d", &innum);
+    printf("Input Number: ");
+    fgets(insystem, 98, stdin);
+    //printf("%c", insystem);
+    printf("%d", lowtohight(insystem, innum));
     return 0;
 }
+||||||| merged common ancestors
+=======
+#include <stdio.h>
+#include "func.h"
+
+int lowtohight(char insystem, int innum);
+
+int main()
+{
+
+	
+}
+>>>>>>> func is ok, but input is wrong
