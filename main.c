@@ -8,7 +8,7 @@ int main()
     fgets(data, 100, stdin);
     int sys;
     scanf("%d", &sys);
-    if (fromdecemal(data, 10, dataout, sys) == 0) {
+    if (fromdecemal(data, dataout, sys) == 0) {
         printf("%s", dataout);
     }
     return 0;

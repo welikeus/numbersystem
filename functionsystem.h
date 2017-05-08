@@ -1,5 +1,5 @@
 #ifndef FUNCTIONSYSTEM_H
 #define FUNCTIONSYSTEM_H
 
-int fromdecimal(char in[], int insystem, char out[], int outsystem);
+int fromdecimal(char in[], char out[], int outsystem);
 #endif
