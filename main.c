@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include "functionsystem.h"
 #include <stdio.h>
 #include <string.h>
@@ -9,15 +10,17 @@ int main()
     int sys;
     scanf("%d", &sys);
     if (fromdecemal(data, dataout, sys) == 0) {
-        printf("%s", dataout);
+        printf("%s\n", dataout);
     }
 
     char insystem[100];
-    int innum;
-    scanf("Input SS of Number: %d", &innum);
-    printf("Input Number: ");
+    int innum, x;
+    x =0;
+    printf("Enter value: ");
     fgets(insystem, 98, stdin);
-    //printf("%c", insystem);
-    printf("%d", lowtohight(insystem, innum));
+    printf("Enter the number system: ");
+    scanf("%d", &innum);
+    x = todecimal(insystem, innum);
+    printf("%d", x);
     return 0;
 }
