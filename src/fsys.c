@@ -7,8 +7,9 @@
 int bonds(char in[], char out[], int innum, int outsystem)
 {
     int intin;
-    intin = todecimal(insystem, innum);
+    intin = todecimal(in, innum);
     fromdecimal(intin, out, outsystem);
+    return 0;
 }
 
 int fromdecimal(int in, char out[], int outsystem)
@@ -23,7 +24,7 @@ int fromdecimal(int in, char out[], int outsystem)
                 save[i++] = (in % outsystem) + '7';
             }
             in /= outsystem;
-        } while (value != 0);
+        } while (in != 0);
         save[i--] = '\0';
         while (i >= 0) {
             out[j++] = save[i--];

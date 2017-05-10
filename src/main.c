@@ -6,24 +6,52 @@ int main()
 {
     char data[100], dataout[100];
     int sys, outsys;
-    printf("Enter the number system: ");
-    scanf("%d", &sys);
-    if(sys < 1) {
-        printf("Incorrect number system! ");
-    }
-    printf("Enter value: ");
-    fgets(data, 100, stdin);
-    if((sys < 10) && (data[i] - '0' >= sys)) {
-        printf("Incorrect value! ");
-        return 0;
-    }
-    if((sys > 10) && (data[i] - '7' >= sys)) {
-        printf("Incorrect value");
-        return 0;
-    }
-    printf("Enter the output number  system: ");
-    scanf("%d", outsys);
-    bonds(data, dataout, sys, outsys)
-    }
+    int save;
+    do {
+        save = 1;
+        printf("Enter the number system: ");
+        scanf("%d", &sys);
+        if (sys < 1 && sys > 16) {
+            printf("Incorrect number system.\n");
+            save = 0;
+        }
+    } while (save == 0);
+
+    do {
+        save = 1;
+        printf("Enter value: ");
+        fgets(data, 100, stdin);
+        if(sys >= 2 && sys < 10) {
+            for (int i = 0; i < strlen(data); i++) {
+                if (data[i] - '0' >= sys) {
+                    printf("Incorrect value.\n");
+                    save = 0;
+                    break;
+                }
+            }
+        } else if (sys > 10 && sys <= 16) {
+            for (int i = 0; i < strlen(data); i++) {
+                if (data[i] - '7' >= sys) {
+                    printf("Incorrect value.\n");
+                    save = 0;
+                    break;
+                }
+            }
+        } else {
+            printf("Input other system.\n");
+        }
+    } while (save == 0);
+
+    do {
+        save = 1;
+        printf("Enter the output number system: ");
+        scanf("%d", &outsys);
+        if (outsys < 2 && outsys > 16) {
+            printf("Incorrect out system.\n");
+            save = 0;
+        }
+    } while (save == 0);
+    bonds(data, dataout, sys, outsys);
+    printf("%s", dataout);
     return 0;
 }
