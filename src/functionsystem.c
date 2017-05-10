@@ -4,18 +4,25 @@
 #include <math.h>
 #include <string.h>
 
-int fromdecimal(char in[], char out[], int outsystem)
+int bonds(char in[], char out[], int innum, int outsystem)
+{
+    int intin;
+    intin = todecimal(insystem, innum);
+    fromdecimal(intin, out, outsystem);
+}
+
+int fromdecimal(int in, char out[], int outsystem)
 {
     if (outsystem >= 2 && outsystem <= 16) {
-        int value = atoi(in), i = 0, j = 0;
+        int i = 0, j = 0;
         char save[100];
         do {
-            if (((value % outsystem) + '0') < '9') {
-                save[i++] = (value % outsystem) + '0';
+            if (((in % outsystem) + '0') < '9') {
+                save[i++] = (in % outsystem) + '0';
             } else {
-                save[i++] = (value % outsystem) + '7';
+                save[i++] = (in % outsystem) + '7';
             }
-            value /= outsystem;
+            in /= outsystem;
         } while (value != 0);
         save[i--] = '\0';
         while (i >= 0) {
