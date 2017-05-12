@@ -1,5 +1,6 @@
 #include <fsys.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 int main()
@@ -10,8 +11,8 @@ int main()
     do {
         save = 1;
         printf("Enter the number system: ");
-        scanf("%d", &sys);
-        if (sys < 1 && sys > 16) {
+        scanf("%d\n", &sys);
+        if (sys < 2 || sys > 16) {
             printf("Incorrect number system.\n");
             save = 0;
         }
@@ -21,24 +22,22 @@ int main()
         save = 1;
         printf("Enter value: ");
         fgets(data, 100, stdin);
-        if(sys >= 2 && sys < 10) {
+        if (sys >= 2 && sys <= 10) {
             for (int i = 0; i < strlen(data); i++) {
-                if (data[i] - '0' >= sys) {
-                    printf("Incorrect value.\n");
-                    save = 0;
-                    break;
-                }
-            }
-        } else if (sys > 10 && sys <= 16) {
-            for (int i = 0; i < strlen(data); i++) {
-                if (data[i] - '7' >= sys) {
+                if ((data[i] - '0') >= sys) {
                     printf("Incorrect value.\n");
                     save = 0;
                     break;
                 }
             }
         } else {
-            printf("Input other system.\n");
+            for (int i = 0; i < strlen(data); i++) {
+                if ((data[i] - '7') >= sys) {
+                    printf("Incorrect value.\n");
+                    save = 0;
+                    break;
+                }
+            }
         }
     } while (save == 0);
 
@@ -46,7 +45,7 @@ int main()
         save = 1;
         printf("Enter the output number system: ");
         scanf("%d", &outsys);
-        if (outsys < 2 && outsys > 16) {
+        if (outsys < 2 || outsys > 16) {
             printf("Incorrect out system.\n");
             save = 0;
         }
