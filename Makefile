@@ -21,7 +21,7 @@ checkdir:
 	@if [ ! -d bin ] ; then echo "creating bin" ; mkdir bin; fi
 
 $(FSO): $(FSC)
-	gcc -Wall -I src -c $< -o $@
+	gcc -Wall -lm -I src -c $< -o $@
 
 $(MAO): $(MAC)
 	gcc -Wall -I src -c $< -o $@
@@ -41,7 +41,7 @@ $(VTSO): $(VTSC)
 $(TEST): $(MTO) $(TSO) $(VTSO)
 	gcc -o $@ $(MTO) $(TSO) $(VTSO)
 
-.PHONY = checkdir clean all
+.PHONY: checkdir clean all
 
 clean:
 	rm -rf bin build

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 int main()
 {
@@ -32,6 +33,9 @@ int main()
             }
         } else {
             for (int i = 0; i < strlen(data); i++) {
+                if (isalpha(data[i]) && islower(data[i])) {
+                    data[i] = toupper(data[i]);
+                }
                 if ((data[i] - '7') >= sys) {
                     printf("Incorrect value.\n");
                     save = 0;
