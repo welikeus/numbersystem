@@ -1,11 +1,10 @@
 #include <ctest.h>
 #include <fsys.h>
-#include <math.h>
 
 CTEST(todecimal_suite, correct_data_2)
 {
     int innum = 2;
-    char *insystem = "10101";
+    char insystem[] = "10101";
     int result = todecimal(insystem, innum);
     int expected = 21;
     ASSERT_EQUAL(expected, result);

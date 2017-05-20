@@ -21,25 +21,25 @@ checkdir:
 	@if [ ! -d bin ] ; then echo "creating bin" ; mkdir bin; fi
 
 $(FSO): $(FSC)
-	gcc -Wall -I src -c $< -o $@ -lm
+	gcc -Wall -lm -I src -c $< -o $@
 
 $(MAO): $(MAC)
-	gcc -Wall -I src -c $< -o $@ -lm
+	gcc -Wall -I src -c $< -o $@
 
 $(PROG): $(MAO) $(FSO)
-	gcc -o $@ $(MAO) $(FSO) -lm
+	gcc -o $@ $(MAO) $(FSO)
 
 $(MTO): $(MTC)
-	gcc -Wall -I test -c $< -o $@ -lm
+	gcc -Wall -I test -c $< -o $@
 
-$(TSO): $(TSC)
-	gcc -Wall -I src -I test -c $< -o $@ -lm
+$(TSO): $(TSC) $(FSO)
+	gcc -Wall -I src -I test -c $< -o $@
 
-$(VTSO): $(VTSC)
-	gcc -Wall -I src -I test -c $< -o $@ -lm
+$(VTSO): $(VTSC) $(FSO)
+	gcc -Wall -I src -I test -c $< -o $@
 
-$(TEST): $(MTO) $(TSO) $(VTSO)
-	gcc -o $@ $(MTO) $(TSO) $(VTSO) -lm
+$(TEST): $(MTO) $(TSO) $(VTSO) $(FSO)
+	gcc -o $@ $(MTO) $(TSO) $(VTSO) $(FSO)
 
 .PHONY = checkdir clean all
 
