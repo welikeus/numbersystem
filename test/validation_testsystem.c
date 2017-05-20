@@ -1,6 +1,6 @@
 #include <fsys.h>
 #include <ctest.h>
-
+/*
 CTEST(fromdecimal_suite, incorrect_outsystem_1)
 {
     const int in = 14;
@@ -38,3 +38,4 @@ CTEST(todecimal_suite, incorrect_insystem_17)
     const int expected = -1;
     ASSERT_EQUAL(expected, result);
 }
+*/
