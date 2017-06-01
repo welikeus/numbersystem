@@ -6,3 +6,5 @@
 Для компиляции приложения: make
 
 Для запуска: translate \<value>
+
+[![Build Status](https://travis-ci.org/welikeus/numbersystem.svg?branch=master)](https://travis-ci.org/welikeus/numbersystem)
