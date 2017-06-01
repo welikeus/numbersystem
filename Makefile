@@ -2,7 +2,7 @@ FSC = src/fsys.c
 FSO = build/src/fsys.o
 MAC = src/main.c
 MAO = build/src/main.o
-PROG = bin/TranslateSystem
+PROG = bin/translate
 
 MTC = test/main.c
 MTO = build/test/main.o
@@ -39,7 +39,7 @@ $(VTSO): $(VTSC)
 	gcc -Wall -I src -I test -c $< -o $@
 
 $(TEST): $(MTO) $(TSO) $(VTSO)
-	gcc -o $@ $(MTO) $(TSO) $(VTSO)
+	gcc -g -O0 -o $@ $(MTO) $(TSO) $(VTSO)
 
 .PHONY: checkdir clean all
 

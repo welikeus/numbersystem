@@ -1,8 +1,8 @@
-#include <fsys.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+#include <fsys.h>
 
 int bonds(char in[], char out[], int innum, int outsystem)
 {
