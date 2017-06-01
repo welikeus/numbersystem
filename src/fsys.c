@@ -4,12 +4,15 @@
 #include <math.h>
 #include <string.h>
 
-int bonds(char in[], char out[], int innum, int outsystem)
+int bonds(char in[], char out[], int insystem, int outsystem)
 {
-    int intin;
-    intin = todecimal(in, innum);
-    fromdecimal(intin, out, outsystem);
-    return 0;
+    if (outsystem >= 2 && outsystem <= 16 && insystem >= 2 && insystem <= 16) {
+        int intin;
+        intin = todecimal(in, insystem);
+        fromdecimal(intin, out, outsystem);
+        return 0;
+    }
+    return -1;
 }
 
 int fromdecimal(int in, char out[], int outsystem)
@@ -35,17 +38,17 @@ int fromdecimal(int in, char out[], int outsystem)
     return -1;
 }
 
-int todecimal(char insystem[], int innum)
+int todecimal(char in[], int insystem)
 {
-    if (innum >= 2 && innum <= 16) {
+    if (insystem >= 2 && insystem <= 16) {
         int size, sum;
-        size = strlen(insystem)-1;
+        size = strlen(in)-1;
         sum = 0;
         for (int i = 0; i < size; ++i) {
-            if (insystem[i] <= '9') {
-                sum += (insystem[i] - '0') * pow(innum, size-i-1);
+            if (in[i] <= '9') {
+                sum += (in[i] - '0') * pow(insystem, size-i-1);
             } else {
-            sum += (insystem[i] - '7') * pow(innum, size-i-1);
+                sum += (in[i] - '7') * pow(insystem, size-i-1);
             }
         }
         return sum;

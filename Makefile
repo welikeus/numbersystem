@@ -33,7 +33,7 @@ $(MTO): $(MTC)
 	gcc -Wall -I test -c $< -o $@
 
 $(TSO): $(TSC) $(FSO)
-	gcc -Wall -I src -I test -c $< -o $@
+	gcc -Wall -lm -I src -I test -c $< -o $@
 
 $(VTSO): $(VTSC) $(FSO)
 	gcc -Wall -I src -I test -c $< -o $@

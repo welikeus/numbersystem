@@ -50,7 +50,11 @@ int main()
             save = 0;
         }
     } while (save == 0);
-    bonds(data, dataout, sys, outsys);
+
+    if (bonds(data, dataout, sys, outsys) == -1) {
+        printf("Fatal error.\n");
+        return 0;
+    }
     printf("%s", dataout);
     return 0;
 }
