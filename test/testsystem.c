@@ -207,5 +207,3 @@ CTEST(fromdecimal_suite, correct_outsystem_4)
     char *expected = "33";
     ASSERT_STR(expected, result);
 }
-
-

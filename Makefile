@@ -2,7 +2,7 @@ FSC = src/fsys.c
 FSO = build/src/fsys.o
 MAC = src/main.c
 MAO = build/src/main.o
-PROG = bin/TranslateSystem
+PROG = bin/translate
 
 MTC = test/main.c
 MTO = build/test/main.o
@@ -24,24 +24,24 @@ $(FSO): $(FSC)
 	gcc -Wall -lm -I src -c $< -o $@
 
 $(MAO): $(MAC)
-	gcc -Wall -I src -c $< -o $@ -lm
+	gcc -Wall -lm -I src -c $< -o $@
 
 $(PROG): $(MAO) $(FSO)
 	gcc -o $@ $(MAO) $(FSO) -lm
 
 $(MTO): $(MTC)
-	gcc -Wall -I test -c $< -o $@ -lm
+	gcc -Wall -lm -I test -c $< -o $@
 
 $(TSO): $(TSC) $(FSO)
 	gcc -Wall -lm -I src -I test -c $< -o $@
 
 $(VTSO): $(VTSC) $(FSO)
-	gcc -Wall -I src -I test -c $< -o $@ -lm
+	gcc -Wall -lm -I src -I test -c $< -o $@
 
-$(TEST): $(MTO) $(TSO) $(VTSO) $(FSO)
-	gcc -o $@ $(MTO) $(TSO) $(VTSO) $(FSO) -lm
+$(TEST): $(MTO) $(TSO) $(VTSO)
+	gcc -lm -g -O0 -o $@ $(MTO) $(TSO) $(VTSO)
 
-.PHONY = checkdir clean all
+.PHONY: checkdir clean all
 
 clean:
 	rm -rf bin build
