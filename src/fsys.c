@@ -4,7 +4,7 @@
 #include <string.h>
 #include <fsys.h>
 
-int bonds(char in[], char out[], int insystem, int outsystem)
+int bonds(char *in, char *out, int insystem, int outsystem)
 {
     if (outsystem >= 2 && outsystem <= 16 && insystem >= 2 && insystem <= 16) {
         int intin;
@@ -15,7 +15,7 @@ int bonds(char in[], char out[], int insystem, int outsystem)
     return -1;
 }
 
-int fromdecimal(int in, char out[], int outsystem)
+int fromdecimal(int in, char *out, int outsystem)
 {
     if (outsystem >= 2 && outsystem <= 16) {
         int i = 0, j = 0;
@@ -38,7 +38,7 @@ int fromdecimal(int in, char out[], int outsystem)
     return -1;
 }
 
-int todecimal(char in[], int insystem)
+int todecimal(char *in, int insystem)
 {
     if (insystem >= 2 && insystem <= 16) {
         int size, sum, i;
