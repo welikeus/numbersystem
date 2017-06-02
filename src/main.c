@@ -4,23 +4,39 @@
 #include <ctype.h>
 #include <fsys.h>
 
-int main(int agrc, char *argv[])
+int main(int argc, char *argv[])
 {
-    char data[100], dataout[100];
+    char systemch[2], outsystemch[2], data[100], dataout[100];
     int sys, outsys, save, i;
     do {
         save = 1;
         printf("Enter the number system: ");
-        scanf("%d\n", &sys);
-        if (sys < 2 || sys > 16) {
-            printf("Incorrect number system.\nInput system from 2 to 16.\n");
-            save = 0;
+        scanf("%s", systemch);
+        for (i = 0; i < 2; i++) {
+            if (!isdigit(systemch[i])) {
+                printf("Incorrect number system.\nEnter the number and not the letter.\nEnter system from 2 to 16.\n");
+                save = 0;
+                break;
+            }
+        }
+        if (save == 1) {
+            sys = atoi(systemch);
+            if (sys < 2 || sys > 16) {
+                printf("Incorrect number system.\nEnter system from 2 to 16.\n");
+                save = 0;
+            }
         }
     } while (save == 0);
 
-    strcpy(data, argv[1]);
+    if (argc > 1) {
+        strcpy(data, argv[1]);
+    }
     do {
         save = 1;
+        if (save == 0 || argc < 2) {
+            printf("Enter value: ");
+            scanf("%s", data);
+        }
         if (sys >= 2 && sys <= 10) {
             for (i = 0; i < strlen(data); i++) {
                 if ((data[i] - '0') >= sys) {
@@ -41,19 +57,25 @@ int main(int agrc, char *argv[])
                 }
             }
         }
-        if (save == 0) {
-            printf("Enter value: ");
-            fgets(data, 100, stdin);
-        }
     } while (save == 0);
 
     do {
         save = 1;
         printf("Enter the output number system: ");
-        scanf("%d", &outsys);
-        if (outsys < 2 || outsys > 16) {
-            printf("Incorrect out system.\nInput system from 2 to 16.\n");
-            save = 0;
+        scanf("%s", outsystemch);
+        for (i = 0; i < 2; i++) {
+            if (!isdigit(outsystemch[i])) {
+                printf("Incorrect number system.\nEnter the number and not the letter.\nEnter system from 2 to 16.\n");
+                save = 0;
+                break;
+            }
+        }
+        if (save == 1) {
+            outsys = atoi(outsystemch);
+            if (outsys < 2 || outsys > 16) {
+                printf("Incorrect number system.\nEnter system from 2 to 16.\n");
+                save = 0;
+            }
         }
     } while (save == 0);
 
@@ -61,7 +83,7 @@ int main(int agrc, char *argv[])
         printf("Fatal error.\n");
         return 0;
     }
-    printf("%s", dataout);
+    printf("Result: %s", dataout);
     getchar();
     getchar();
     return 0;
