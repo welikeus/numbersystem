@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
         scanf("%s", systemch);
         for (i = 0; i < strlen(systemch); i++) {
             if (!isdigit(systemch[i])) {
-                printf("Incorrect number system.\nEnter the number and not the letter.\nEnter system from 2 to 16.\n");
+                printf("\n|Incorrect number system!\n|Enter the number and not the letter.\n|Enter system from 2 to 16.\n\n");
                 save = 0;
                 break;
             }
@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
         if (save == 1) {
             sys = atoi(systemch);
             if (sys < 2 || sys > 16) {
-                printf("Incorrect number system.\nEnter system from 2 to 16.\n");
+                printf("\n|Incorrect number system!\n|Enter system from 2 to 16.\n\n");
                 save = 0;
             }
         }
@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
         if (sys >= 2 && sys <= 10) {
             for (i = 0; i < strlen(data); i++) {
                 if ((data[i] - '0') >= sys) {
-                    printf("Incorrect value.\n");
+                    printf("\n|Incorrect value!\n\n");
                     save = 0;
                     break;
                 }
@@ -54,12 +54,12 @@ int main(int argc, char *argv[])
                         data[i] = toupper(data[i]);
                     }
                     if ((data[i] - '7') >= sys) {
-                        printf("Incorrect value.\n");
+                        printf("\n|Incorrect value!\n\n");
                         save = 0;
                         break;
                     }
                 } else {
-                    printf("Incorrect value.\n");
+                    printf("\n|Incorrect value.\n\n");
                     save = 0;
                     break;
                 }
@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
         scanf("%s", outsystemch);
         for (i = 0; i < strlen(outsystemch); i++) {
             if (!isdigit(outsystemch[i])) {
-                printf("Incorrect number system.\nEnter the number and not the letter.\nEnter system from 2 to 16.\n");
+                printf("\n|Incorrect number system!\n|Enter the number and not the letter.\n|Enter system from 2 to 16.\n\n");
                 save = 0;
                 break;
             }
@@ -81,14 +81,14 @@ int main(int argc, char *argv[])
         if (save == 1) {
             outsys = atoi(outsystemch);
             if (outsys < 2 || outsys > 16) {
-                printf("Incorrect number system.\nEnter system from 2 to 16.\n");
+                printf("\n|Incorrect number system!\n|Enter system from 2 to 16.\n\n");
                 save = 0;
             }
         }
     } while (save == 0);
 
     if (bonds(data, dataout, sys, outsys) == -1) {
-        printf("Fatal error.\n");
+        printf("\n|Fatal error.\n");
         return 0;
     }
     printf("Result: %s", dataout);
