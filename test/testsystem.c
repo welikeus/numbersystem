@@ -129,3 +129,83 @@ CTEST(todecimal_suite, correct_data_16)
 
 }
 
+CTEST(fromdecimal_suite, correct_outsystem_16)
+{
+    int in = 15;
+    char result[100];
+    int outsystem = 16;
+    fromdecimal (in, result, outsystem);
+    char *expected = "F";
+    ASSERT_STR(expected, result);
+}
+
+CTEST(fromdecimal_suite, correct_outsystem_5)
+{
+    int in = 31;
+    char result[100];
+    int outsystem = 15;
+    fromdecimal (in, result, outsystem);
+    char *expected = "21";
+    ASSERT_STR(expected, result);
+}
+
+CTEST(fromdecimal_suite, correct_outsystem_14)
+{
+    int in = 158;
+    char result[100];
+    int outsystem = 14;
+    fromdecimal (in, result, outsystem);
+    char *expected = "B4";
+    ASSERT_STR(expected, result);
+}
+
+CTEST(fromdecimal_suite, correct_outsystem_13)
+{
+    int in = 81;
+    char result[100];
+    int outsystem = 13;
+    fromdecimal (in, result, outsystem);
+    char *expected = "63";
+    ASSERT_STR(expected, result);
+}
+
+CTEST(fromdecimal_suite, correct_outsystem_12)
+{
+    int in = 15;
+    char result[100];
+    int outsystem = 12;
+    fromdecimal (in, result, outsystem);
+    char *expected = "13";
+    ASSERT_STR(expected, result);
+}
+CTEST(fromdecimal_suite, correct_outsystem_11)
+{
+    int in = 44;
+    char result[100];
+    int outsystem = 11;
+    fromdecimal (in, result, outsystem);
+    char *expected = "40";
+    ASSERT_STR(expected, result);
+}
+
+CTEST(fromdecimal_suite, correct_outsystem_10)
+{
+    int in = 15;
+    char result[100];
+    int outsystem = 10;
+    fromdecimal (in, result, outsystem);
+    char *expected = "15";
+    ASSERT_STR(expected, result);
+}
+
+CTEST(fromdecimal_suite, correct_outsystem_4)
+{
+    int in = 15;
+    char result[100];
+    int outsystem = 4;
+    fromdecimal (in, result, outsystem);
+    char *expected = "33";
+    ASSERT_STR(expected, result);
+}
+
+
