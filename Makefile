@@ -27,7 +27,7 @@ $(MAO): $(MAC)
 	gcc -Wall -lm -I src -c $< -o $@
 
 $(PROG): $(MAO) $(FSO)
-	gcc -lm -o $@ $(MAO) $(FSO)
+	gcc -o $@ $(MAO) $(FSO) -lm
 
 $(MTO): $(MTC)
 	gcc -Wall -lm -I test -c $< -o $@
