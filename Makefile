@@ -24,22 +24,22 @@ $(FSO): $(FSC)
 	gcc -Wall -lm -I src -c $< -o $@
 
 $(MAO): $(MAC)
-	gcc -Wall -I src -c $< -o $@
+	gcc -Wall -I src -c $< -o $@ -lm
 
 $(PROG): $(MAO) $(FSO)
-	gcc -o $@ $(MAO) $(FSO)
+	gcc -o $@ $(MAO) $(FSO) -lm
 
 $(MTO): $(MTC)
-	gcc -Wall -I test -c $< -o $@
+	gcc -Wall -I test -c $< -o $@ -lm
 
 $(TSO): $(TSC) $(FSO)
 	gcc -Wall -lm -I src -I test -c $< -o $@
 
 $(VTSO): $(VTSC) $(FSO)
-	gcc -Wall -I src -I test -c $< -o $@
+	gcc -Wall -I src -I test -c $< -o $@ -lm
 
 $(TEST): $(MTO) $(TSO) $(VTSO) $(FSO)
-	gcc -o $@ $(MTO) $(TSO) $(VTSO) $(FSO)
+	gcc -o $@ $(MTO) $(TSO) $(VTSO) $(FSO) -lm
 
 .PHONY = checkdir clean all
 
