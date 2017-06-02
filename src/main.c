@@ -7,7 +7,7 @@
 int main(int agrc, char *argv[])
 {
     char data[100], dataout[100];
-    int sys, outsys, save;
+    int sys, outsys, save, i;
     do {
         save = 1;
         printf("Enter the number system: ");
@@ -22,7 +22,7 @@ int main(int agrc, char *argv[])
     do {
         save = 1;
         if (sys >= 2 && sys <= 10) {
-            for (int i = 0; i < strlen(data); i++) {
+            for (i = 0; i < strlen(data); i++) {
                 if ((data[i] - '0') >= sys) {
                     printf("Incorrect value.\n");
                     save = 0;
@@ -30,7 +30,7 @@ int main(int agrc, char *argv[])
                 }
             }
         } else {
-            for (int i = 0; i < strlen(data); i++) {
+            for (i = 0; i < strlen(data); i++) {
                 if (isalpha(data[i]) && islower(data[i])) {
                     data[i] = toupper(data[i]);
                 }

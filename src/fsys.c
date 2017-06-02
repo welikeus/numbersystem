@@ -41,14 +41,14 @@ int fromdecimal(int in, char out[], int outsystem)
 int todecimal(char in[], int insystem)
 {
     if (insystem >= 2 && insystem <= 16) {
-        int size, sum;
-        size = strlen(in)-1;
+        int size, sum, i;
+        size = strlen(in) - 1;
         sum = 0;
-        for (int i = 0; i < size; ++i) {
+        for (i = 0; i < size; ++i) {
             if (in[i] <= '9') {
-                sum += (in[i] - '0') * pow(insystem, size-i-1);
+                sum += (in[i] - '0') * pow(insystem, size - i - 1);
             } else {
-                sum += (in[i] - '7') * pow(insystem, size-i-1);
+                sum += (in[i] - '7') * pow(insystem, size - i - 1);
             }
         }
         return sum;
