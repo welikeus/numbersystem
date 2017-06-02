@@ -30,13 +30,13 @@ $(PROG): $(MAO) $(FSO)
 	gcc -o $@ $(MAO) $(FSO) -lm
 
 $(MTO): $(MTC)
-	gcc -Wall -lm -I test -c $< -o $@
+	gcc -Wall -lm -I thirdparty -c $< -o $@
 
 $(TSO): $(TSC) $(FSO)
-	gcc -Wall -lm -I src -I test -c $< -o $@
+	gcc -Wall -lm -I src -I thirdparty -c $< -o $@
 
 $(VTSO): $(VTSC) $(FSO)
-	gcc -Wall -lm -I src -I test -c $< -o $@
+	gcc -Wall -lm -I src -I thirdparty -c $< -o $@
 
 $(TEST): $(MTO) $(TSO) $(VTSO) $(FSO)
 	gcc -g -O0 -o $@ $(MTO) $(TSO) $(VTSO) $(FSO) -lm

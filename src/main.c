@@ -4,15 +4,17 @@
 #include <ctype.h>
 #include <fsys.h>
 
+#define SIZEM 100
+
 int main(int argc, char *argv[])
 {
-    char systemch[2], outsystemch[2], data[100], dataout[100];
+    char systemch[4], outsystemch[4], data[SIZEM], dataout[SIZEM];
     int sys, outsys, save, i;
     do {
         save = 1;
         printf("Enter the number system: ");
         scanf("%s", systemch);
-        for (i = 0; i < 2; i++) {
+        for (i = 0; i < strlen(systemch); i++) {
             if (!isdigit(systemch[i])) {
                 printf("Incorrect number system.\nEnter the number and not the letter.\nEnter system from 2 to 16.\n");
                 save = 0;
@@ -47,10 +49,16 @@ int main(int argc, char *argv[])
             }
         } else {
             for (i = 0; i < strlen(data); i++) {
-                if (isalpha(data[i]) && islower(data[i])) {
-                    data[i] = toupper(data[i]);
-                }
-                if ((data[i] - '7') >= sys) {
+                if ((data[i] >= 'A' && data[i] <= 'F') || (data[i] >= 'a' && data[i] <= 'f') || isdigit(data[i])) {
+                    if (isalpha(data[i]) && islower(data[i])) {
+                        data[i] = toupper(data[i]);
+                    }
+                    if ((data[i] - '7') >= sys) {
+                        printf("Incorrect value.\n");
+                        save = 0;
+                        break;
+                    }
+                } else {
                     printf("Incorrect value.\n");
                     save = 0;
                     break;
@@ -63,7 +71,7 @@ int main(int argc, char *argv[])
         save = 1;
         printf("Enter the output number system: ");
         scanf("%s", outsystemch);
-        for (i = 0; i < 2; i++) {
+        for (i = 0; i < strlen(outsystemch); i++) {
             if (!isdigit(outsystemch[i])) {
                 printf("Incorrect number system.\nEnter the number and not the letter.\nEnter system from 2 to 16.\n");
                 save = 0;

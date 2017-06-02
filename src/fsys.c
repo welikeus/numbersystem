@@ -4,6 +4,8 @@
 #include <string.h>
 #include <fsys.h>
 
+#define SIZEM 100
+
 int bonds(char *in, char *out, int insystem, int outsystem)
 {
     if (outsystem >= 2 && outsystem <= 16 && insystem >= 2 && insystem <= 16) {
@@ -19,9 +21,9 @@ int fromdecimal(int in, char *out, int outsystem)
 {
     if (outsystem >= 2 && outsystem <= 16) {
         int i = 0, j = 0;
-        char save[100];
+        char save[SIZEM];
         do {
-            if (((in % outsystem) + '0') < '9') {
+            if (((in % outsystem) + '0') <= '9') {
                 save[i++] = (in % outsystem) + '0';
             } else {
                 save[i++] = (in % outsystem) + '7';
@@ -29,6 +31,7 @@ int fromdecimal(int in, char *out, int outsystem)
             in /= outsystem;
         } while (in != 0);
         save[i--] = '\0';
+
         while (i >= 0) {
             out[j++] = save[i--];
         } 
@@ -42,13 +45,13 @@ int todecimal(char *in, int insystem)
 {
     if (insystem >= 2 && insystem <= 16) {
         int size, sum, i;
-        size = strlen(in) - 1;
+        size = strlen(in);
         sum = 0;
-        for (i = 0; i < size; ++i) {
+        for (i = 0; i < size; i++) {
             if (in[i] <= '9') {
-                sum += (in[i] - '0') * pow(insystem, size - i - 1);
+                sum += (in[i] - '0') * pow(insystem, (size - i - 1));
             } else {
-                sum += (in[i] - '7') * pow(insystem, size - i - 1);
+                sum += (in[i] - '7') * pow(insystem, (size - i - 1));
             }
         }
         return sum;

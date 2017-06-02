@@ -1,10 +1,12 @@
 #include <ctest.h>
 #include <fsys.h>
 
+#define SIZEM 100
+
 CTEST(fromdecimal_suite, incorrect_outsystem_1)
 {
     const int in = 14;
-    char out[100];
+    char out[SIZEM];
     const int outsystem = 1;
     const int result = fromdecimal(in, out, outsystem);
     const int expected = -1;
@@ -14,7 +16,7 @@ CTEST(fromdecimal_suite, incorrect_outsystem_1)
 CTEST(fromdecimal_suite, incorrect_outsystem_17)
 {
     const int in = 27;
-    char out[100];
+    char out[SIZEM];
     const int outsystem = 17;
     const int result = fromdecimal(in, out, outsystem);
     const int expected = -1;
@@ -42,7 +44,7 @@ CTEST(todecimal_suite, incorrect_insystem_17)
 CTEST(bonds_suite, incorrect_insystem_1)
 {
     char in[] = "00";
-    char out[100];
+    char out[SIZEM];
     const int insystem = 1;
     const int outsystem = 10;
     const int result = bonds(in, out, insystem, outsystem);
@@ -53,7 +55,7 @@ CTEST(bonds_suite, incorrect_insystem_1)
 CTEST(bonds_suite, incorrect_insystem_17)
 {
     char in[] = "FG";
-    char out[100];
+    char out[SIZEM];
     const int insystem = 17;
     const int outsystem = 10;
     const int result = bonds(in, out, insystem, outsystem);
@@ -64,7 +66,7 @@ CTEST(bonds_suite, incorrect_insystem_17)
 CTEST(bonds_suite, incorrect_outsystem_1)
 {
     char in[] = "1010";
-    char out[100];
+    char out[SIZEM];
     const int insystem = 2;
     const int outsystem = 1;
     const int result = bonds(in, out, insystem, outsystem);
@@ -75,7 +77,7 @@ CTEST(bonds_suite, incorrect_outsystem_1)
 CTEST(bonds_suite, incorrect_outsystem_17)
 {
     char in[] = "1010";
-    char out[100];
+    char out[SIZEM];
     const int insystem = 2;
     const int outsystem = 17;
     const int result = bonds(in, out, insystem, outsystem);
