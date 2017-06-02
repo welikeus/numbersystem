@@ -27,7 +27,7 @@ $(MAO): $(MAC)
 	gcc -Wall -lm -I src -c $< -o $@
 
 $(PROG): $(MAO) $(FSO)
-	gcc -o $@ $(MAO) $(FSO) -lm
+	gcc -lm -o $@ $(MAO) $(FSO)
 
 $(MTO): $(MTC)
 	gcc -Wall -lm -I test -c $< -o $@
@@ -38,8 +38,8 @@ $(TSO): $(TSC) $(FSO)
 $(VTSO): $(VTSC) $(FSO)
 	gcc -Wall -lm -I src -I test -c $< -o $@
 
-$(TEST): $(MTO) $(TSO) $(VTSO)
-	gcc -lm -g -O0 -o $@ $(MTO) $(TSO) $(VTSO)
+$(TEST): $(MTO) $(TSO) $(VTSO) $(FSO)
+	gcc -lm -g -O0 -o $@ $(MTO) $(TSO) $(VTSO) $(FSO)
 
 .PHONY: checkdir clean all
 
