@@ -39,7 +39,7 @@ $(VTSO): $(VTSC) $(FSO)
 	gcc -Wall -lm -I src -I test -c $< -o $@
 
 $(TEST): $(MTO) $(TSO) $(VTSO) $(FSO)
-	gcc -lm -g -O0 -o $@ $(MTO) $(TSO) $(VTSO) $(FSO)
+	gcc -g -O0 -o $@ $(MTO) $(TSO) $(VTSO) $(FSO) -lm
 
 .PHONY: checkdir clean all
 
